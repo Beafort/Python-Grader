@@ -1,4 +1,4 @@
-
+import pandas as pd
 def open_file(name):
     try:
         f = open("Data Files/" + name, "r")
@@ -11,19 +11,21 @@ def open_file(name):
         
 
 def check_student_id(id: str) -> bool: 
-    
+    # id is wrong when it doesnt start with N or of incorrect length
     if id[0] != 'N' or len(id) != 9:
         return False
     else: 
         return True
     
-        
+#check validity of lines
+#return a list of valid ones and a count of invalid ones
 def analyze(content : str):
     print("**** ANALYZING ***")
     lines = content.splitlines()
     invalid_count = 0
+    valid_lines = []
     for line in lines: 
-        # error list 
+        # error list to print later
         errors: list[str] = []
 
         data = line.split(",")
@@ -46,30 +48,48 @@ def analyze(content : str):
             print()
             print(line)
             print()
-            continue
+        else:
+            valid_lines.append(line)
 
     if invalid_count == 0:
         print("No errors found!")
     
-    return lines, invalid_count
+    return valid_lines, invalid_count
 
 
 def grade(ans: str, key: str):
     ans_list = ans.split(",")
+    # remove student id
     ans_list = ans_list[1:]
     key_list = key.split(",")
-
+    
     grade = 0
 
+    
     for a, k in zip(ans_list, key_list):
         if a == k:
             grade += 4
         elif a == "":
-            continue
+            grade += 0
         else:
             grade -= 1
 
     return grade
 
+def report(grades: list):
+    # convert to pandas series
+    pd_grade = pd.Series(grades)
 
+    mean = pd_grade.mean()
+    highest = pd_grade.max()
+    lowest = pd_grade.min()
+    median = pd_grade.median()
+    score_range = highest - lowest
+
+    print(f"Mean (average) score: {mean}")
+    print(f"Highest score: {highest}")
+    print(f"Lowest score: {lowest}")
+    print(f"Range of scores: {score_range}")
+    print(f"Median score: {int(median)}")
+    
         
