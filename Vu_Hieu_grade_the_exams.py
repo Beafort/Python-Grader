@@ -1,6 +1,6 @@
 import numpy
 
-from utils import open_file, analyze, grade, report
+from utils import open_file, analyze, grade, report, write_to_file
 
 
 def main():
@@ -22,13 +22,13 @@ def main():
     ids = []
     for line in lines:
         data = line.split(",")
-        grades.append(grade(data[1:], answer_key))
+        grades.append(grade(data[1:], key_list))
         ids.append(data[0])
     print("*** Report ***")
     print("Number of valid lines:" , len(lines))
     print("Number of invalid lines:" , invalid_count)
     report(grades)
-    
+    write_to_file(ids,grades,file_name)
 
 
 if __name__ == "__main__":
