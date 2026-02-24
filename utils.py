@@ -92,4 +92,4 @@ def write_to_file(ids: list[int], grades: list[int], name: str):
         "id" : ids,
         "grades": grades
     })
-    df.to_csv(name+"_grades", header=None, index=None)
+    df.to_csv(name+"_grades,txt", header=None, index=None)
