@@ -19,14 +19,15 @@ def main():
    
     
     grades = []
+    ids = []
     for line in lines:
         data = line.split(",")
         grades.append(grade(data[1:], answer_key))
-
+        ids.append(data[0])
     print("*** Report ***")
     print("Number of valid lines:" , len(lines))
     print("Number of invalid lines:" , invalid_count)
-    report(grades)
+    report(ids, grades)
     
 
 

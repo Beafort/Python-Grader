@@ -86,3 +86,10 @@ def report(grades: list):
     print(f"Lowest score: {lowest}")
     print(f"Range of scores: {score_range}")
     print(f"Median score: {int(median)}")
+
+def write_to_file(ids: list[int], grades: list[int], name: str):
+    df = pd.DataFrame({
+        "id" : ids,
+        "grades": grades
+    })
+    df.to_csv(name+"_grades", header=None, index=None)
