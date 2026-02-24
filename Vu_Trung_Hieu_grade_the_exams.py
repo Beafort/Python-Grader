@@ -4,30 +4,35 @@ from utils import open_file, analyze, grade, report, write_to_file
 
 
 def main():
+    #Input keys here, hard coded to 25 answers
     answer_key = "B,A,D,D,C,B,D,A,C,C,D,B,A,B,A,C,B,D,A,C,A,A,B,D,D"
     key_list = answer_key.split(",")
+
+    #Read from file
     file_name = input("Enter file name: ")
     f = open_file(file_name + ".txt")
     content = f.read()
 
-    
+    #Analyze
     lines, invalid_count = analyze(content)
-    
-    
-    
-    
-   
-    
+
+    #Grades
     grades = []
     ids = []
+    
     for line in lines:
         data = line.split(",")
+        #data[0] is the id so we start from 1
         grades.append(grade(data[1:], key_list))
         ids.append(data[0])
+
+    #Report
     print("*** Report ***")
     print("Number of valid lines:" , len(lines))
     print("Number of invalid lines:" , invalid_count)
     report(grades)
+
+    #Write
     write_to_file(ids,grades,file_name)
 
 
