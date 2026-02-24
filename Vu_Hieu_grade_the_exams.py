@@ -7,7 +7,7 @@ def main():
     answer_key = "B,A,D,D,C,B,D,A,C,C,D,B,A,B,A,C,B,D,A,C,A,A,B,D,D"
     key_list = answer_key.split(",")
     file_name = input("Enter file name: ")
-    f = open_file(file_name)
+    f = open_file(file_name + ".txt")
     content = f.read()
 
     
