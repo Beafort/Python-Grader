@@ -11,11 +11,12 @@ def open_file(name):
         
 
 def check_student_id(id: str) -> bool: 
-    # id is wrong when it doesnt start with N or of incorrect length
-    if id[0] != 'N' or len(id) != 9:
-        return False
-    else: 
-        return True
+    # id format should be N######## where # is digit
+    return (
+        len(id) == 9 and
+        id.startswith('N') and
+        id[1:].isdigit()
+    )
     
 #check validity of lines
 #return a list of valid ones and a count of invalid ones
