@@ -27,7 +27,7 @@ def main():
     print("*** Report ***")
     print("Number of valid lines:" , len(lines))
     print("Number of invalid lines:" , invalid_count)
-    report(ids, grades)
+    report(grades)
     
 
 
