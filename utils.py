@@ -24,7 +24,7 @@ def analyze(content : str):
     print("**** ANALYZING ***")
     lines = content.splitlines()
     invalid_count = 0
-    valid_lines = []
+    valid_lines: list[str] = []
     for line in lines: 
         # error list to print later
         errors: list[str] = []
@@ -58,16 +58,10 @@ def analyze(content : str):
     return valid_lines, invalid_count
 
 
-def grade(ans: str, key: str):
-    ans_list = ans.split(",")
-    # remove student id
-    ans_list = ans_list[1:]
-    key_list = key.split(",")
-    
+def grade(ans: list, key: list):
     grade = 0
 
-    
-    for a, k in zip(ans_list, key_list):
+    for a, k in zip(ans, key):
         if a == k:
             grade += 4
         elif a == "":
@@ -92,5 +86,3 @@ def report(grades: list):
     print(f"Lowest score: {lowest}")
     print(f"Range of scores: {score_range}")
     print(f"Median score: {int(median)}")
-    
-        
