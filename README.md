@@ -12,7 +12,12 @@ pandas
 3. Output to a .txt files
 
 ## Usage
-1. Put the raw answer sheets into Data files folder
+1. Put the raw answer sheets into Data files folder (format: N########,A,B,C,D,...)
 2. Put the answer key in grade_the_exams.py
 3. Run the grade_the_exams.py
+4. Enter the name of the raw answer sheet
+
+## Misc
+1. Currently hard-coded to 25 answers
+   
 
